@@ -19,6 +19,7 @@ export default function Sidebar(){
     const [showCreateSubjectModal, setShowCreateSubjectModal] = useState(false)
     const createSubjectRef = useRef<HTMLInputElement>(null)
     const profileMenuRef = useRef<HTMLDivElement>(null)
+    const [email , setEmail] = useState<string>('')
     useEffect(() => {
         // check the token if it is valid
         const token = localStorage.getItem('access_token')
@@ -29,7 +30,7 @@ export default function Sidebar(){
                     router.push('/login')
                 }
                 else {
-                    console.log(res.data)                    
+                    setEmail(res.data.user.email as string)            
                     supabase.from('Subjects').select('*, Notes(*)').eq('user_id', res.data.user.id).then((res) => {
                         if(res.error){
                             console.log("Error ", res.error.message)
@@ -107,6 +108,7 @@ export default function Sidebar(){
                 <div className="flex">
                     <div className="w-10 h-10 bg-slate-500 rounded-full mr-3"></div>
                     <div>
+                        <p className="text-xs truncate w-5/6">{email}</p>
                         <p className="text-xs">Free account</p>
                     </div>
                 </div>
