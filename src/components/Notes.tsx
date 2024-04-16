@@ -102,7 +102,7 @@ export default function Notes(props: any){
                                 <button className="text-white w-fit text-sm" onClick={() => deleteNote()}>Delete</button>
                             </div>}
             </div>
-            {showRenameNote && <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+            {showRenameNote && <div className="fixed top-0 left-0 w-full h-full z-10 bg-black bg-opacity-50 flex justify-center items-center">
             <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-2">
                 <p className="text-lg font-semibold">Rename the note</p>
                     <input ref={renameNoteRef} type="text" placeholder="Enter a note name" className="w-80 h-10 border border-slate-600 rounded-md px-2" />

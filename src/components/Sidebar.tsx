@@ -115,7 +115,7 @@ export default function Sidebar(){
                 {showProfileModal && <div ref={profileMenuRef}><ProfileMenu profileModal={setShowProfileModal} /></div>}
             </div>
         </div>
-        {showCreateSubjectModal && <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+        {showCreateSubjectModal && <div className="fixed top-0 left-0 z-10 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
             <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-2">
                 <p className="text-lg font-semibold">Create a new subject</p>
                 <input ref={createSubjectRef} type="text" placeholder="Enter the subject name" className="w-80 h-10 border border-slate-600 rounded-md px-2" />

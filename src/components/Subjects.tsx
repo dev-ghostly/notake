@@ -152,7 +152,7 @@ export default function Subjects({name, id, notes} : {name: string, id: string, 
                 <Notes key={note.id} name={note.name} id={note.id} subjectid={id} />
             ))}
         </div>}
-        {showCreateNote && <div className="absolute top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+        {showCreateNote && <div className="absolute top-0 left-0 w-full h-full z-10 bg-gray-900 bg-opacity-50 flex justify-center items-center">
             <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-2">
                 <p className="text-lg font-semibold">Create a new note</p>
                 <input ref={createNoteRef} type="text" placeholder="Enter the subject name" className="w-80 h-10 border border-slate-600 rounded-md px-2" />
@@ -162,7 +162,7 @@ export default function Subjects({name, id, notes} : {name: string, id: string, 
                 </div>
             </div>
         </div>}
-        {showRenameSubject && <div className="absolute top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+        {showRenameSubject && <div className="absolute top-0 left-0 z-10 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
             <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-2">
                 <p className="text-lg font-semibold">Rename the subject</p>
                 <input ref={renameSubjectRef} type="text" placeholder="Enter the new subject name" className="w-80 h-10 border border-slate-600 rounded-md px-2" />
