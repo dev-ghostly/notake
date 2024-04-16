@@ -1,10 +1,31 @@
+'use client'
+import { createClient } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
 export default function Home() {
+  const supabase = createClient();
+  const [isLogged, setIsLogged] = useState(false);
+  useEffect(() => {
+    supabase.auth.getUser(localStorage.getItem("access_token") as string).then((user) => {
+      if (user.error) {
+        setIsLogged(false);
+      } else {
+        setIsLogged(true);
+      }
+    })
+  }, []);
   return (
     <main className="max-w-screen-xl mx-auto">
       <div className="relative isolate px-6 pt-2 lg:px-8">
       <nav className="py-2 w-full flex justify-between items-center tracking-tight">
         <p className="font-bold text-lg">Notake</p>
-        <ul className="flex gap-4">
+        {isLogged ? <ul className="flex gap-4">
+          <li className="flex items-center text-white font-medium"><a
+                href="/app"
+                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Go to app
+              </a></li>
+        </ul> :  <ul className="flex gap-4">
           <li className="flex items-center text-white font-medium"><a
                 href="/login"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -17,7 +38,8 @@ export default function Home() {
               >
                 Register
               </a></li>
-        </ul>
+        </ul>}
+        
       </nav>
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
