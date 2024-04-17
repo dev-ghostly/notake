@@ -153,22 +153,22 @@ export default function Subjects({name, id, notes} : {name: string, id: string, 
             ))}
         </div>}
         {showCreateNote && <div className="absolute top-0 left-0 w-full h-full z-10 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-2">
+            <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-4">
                 <p className="text-lg font-semibold">Create a new note</p>
-                <input ref={createNoteRef} type="text" placeholder="Enter the subject name" className="w-80 h-10 border border-slate-600 rounded-md px-2" />
+                <input ref={createNoteRef} type="text" placeholder="Enter the subject name" className="w-72 h-8 border border-slate-600 rounded-md px-2 placeholder:text-sm" />
                 <div className="flex gap-2">
-                    <button className="bg-indigo-600 text-white px-4 py-2 rounded-md" onClick={() => createNote()}>Create</button>
-                    <button className="bg-red-600 text-white px-4 py-2 rounded-md" onClick={() => setShowCreateNote(!showCreateNote)}>Cancel</button>
+                    <button className="bg-indigo-600 text-sm text-white px-4 py-2 rounded-md" onClick={() => createNote()}>Create</button>
+                    <button className="bg-red-600 text-sm text-white px-4 py-2 rounded-md" onClick={() => setShowCreateNote(!showCreateNote)}>Cancel</button>
                 </div>
             </div>
         </div>}
         {showRenameSubject && <div className="absolute top-0 left-0 z-10 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-2">
+            <div className="bg-white w-96 h-44 rounded-md flex flex-col justify-center items-center gap-4">
                 <p className="text-lg font-semibold">Rename the subject</p>
-                <input ref={renameSubjectRef} type="text" placeholder="Enter the new subject name" className="w-80 h-10 border border-slate-600 rounded-md px-2" />
+                <input ref={renameSubjectRef} type="text" placeholder="Enter the new subject name" className="w-72 h-8 border placeholder:text-sm border-slate-600 rounded-md px-2" />
                 <div className="flex gap-2">
-                    <button className="bg-indigo-600 text-white px-4 py-2 rounded-md" onClick={() => renameSubject()}>Rename</button>
-                    <button className="bg-red-600 text-white px-4 py-2 rounded-md" onClick={() => setShowRenameSubject(!showRenameSubject)}>Cancel</button>
+                    <button className="bg-indigo-600 text-sm text-white px-4 py-2 rounded-md" onClick={() => renameSubject()}>Rename</button>
+                    <button className="bg-red-600 text-sm text-white px-4 py-2 rounded-md" onClick={() => setShowRenameSubject(!showRenameSubject)}>Cancel</button>
                 </div>
             </div>
         </div>}
