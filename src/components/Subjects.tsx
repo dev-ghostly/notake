@@ -33,11 +33,12 @@ export default function Subjects({name, id, notes} : {name: string, id: string, 
                     window.location.href = '/login'
                 }
                 else {
+                    const userid = res.data.user.id;
                     supabase.from('Notes').insert({name: note, subject : id}).then((res) => {
                         console.log(res)
                         if (res.status === 201) {
                             alert('Note created successfully')
-                            supabase.from('Subjects').select('*, Notes(*)').eq('id', id).then((res) => {
+                            supabase.from('Subjects').select('*, Notes(*)').eq('user_id', userid).then((res) => {
                                 if(res.error){
                                     console.log("Error ", res.error.message)
                                 }
